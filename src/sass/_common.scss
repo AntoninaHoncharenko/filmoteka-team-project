@@ -1,1 +1,78 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  font-family: 'Roboto', sans-serif;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+    height: 300px;
+  }
+}
+
+main {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+section {
+  padding: 20px 0;
+}
+
+.pagination-section {
+  padding: 20px 0 40px 0;
+
+  @include tablet {
+    padding: 40px 0 60px 0;
+  }
+}
+
+.section-library {
+  padding: 20px 0;
+
+  @include tablet {
+    padding: 60px 0 60px 0;
+  }
+}
+
+// ------------
+.main--dark {
+  background-color: rgb(57, 55, 55);
+}
+// ------------
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.empty-library-title {
+  margin: 0 auto;
+  font-size: 20px;
+}

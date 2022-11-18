@@ -1,0 +1,355 @@
+.header {
+  background-color: rgba(0, 0, 0, 0.56);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../images/background/mobile.jpg);
+  opacity: 0.9;
+
+  @include tablet {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/background/tablet.jpg);
+
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/background/tablet2x.jpg);
+    }
+  }
+
+  @include desktop {
+  
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/background/homedesktop.jpg);
+
+
+    @include retina {
+     
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/background/homedesktop2x.jpg);
+    }
+  }
+
+     @include largedesktop {
+       background-repeat: repeat-x;
+       background-size: contain;
+       background-repeat: repeat;
+      
+  
+  
+       @include retina {
+         background-repeat: repeat-x;
+         background-size: contain;
+         background-repeat: repeat;
+        
+       }
+     }
+}
+
+
+
+.header__container {
+  padding-top: 35px;
+  padding-bottom: 40px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    ЛОГО І НАВІГАЦІЯ                        */
+/* -------------------------------------------------------------------------- */
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+
+  @include tablet {
+    margin-bottom: 35px;
+  }
+}
+.logo-wrap {
+  cursor: pointer;
+}
+
+.logo-wrap:hover .logo,
+.logo-wrap:focus .logo {
+  animation: flip;
+  animation-duration: 2000ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  max-width: 100%;
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  transition: scale 250ms var(--timing-function);
+
+  &:focus {
+    scale: 1.2;
+  }
+}
+
+.logo__text {
+  display: none;
+
+  @include tablet {
+    height: 34px;
+    display: block;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin-left: 8px;
+
+    color: var(--main-light-color);
+  }
+}
+
+.header-menu__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-menu__item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.header-menu__link {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: var(--main-light-color);
+  transition: color 250ms var(--timing-function),
+    scale 250ms var(--timing-function);
+
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+    scale: 1.2;
+  }
+
+  &--current {
+    position: relative;
+    &::after {
+      position: absolute;
+      bottom: 7px;
+      left: 0;
+
+      display: inline-block;
+      content: '';
+      width: 100%;
+      height: 3px;
+
+      background-color: var(--current-link-color);
+
+      @include tablet {
+        bottom: 9px;
+      }
+      @include desktop {
+        bottom: 11px;
+      }
+    }
+  }
+  @include tablet {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                ФОРМА ПОШУКУ                                */
+/* -------------------------------------------------------------------------- */
+
+.header-form {
+  animation: pulse;
+  animation-duration: 2000ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+  display: flex;
+  margin-bottom: 52px;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    width: 44%;
+    margin-bottom: 41px;
+  }
+
+  @include desktop {
+    width: 31%;
+    margin-bottom: 41px;
+  }
+}
+.header-form__input {
+  cursor: pointer;
+  width: 100%;
+  height: 20px;
+  padding-bottom: 4px;
+  border: none;
+  color: var(--main-light-color);
+  border-bottom: 0.5px solid var(--main-light-color);
+  background-color: transparent;
+
+  transition: border-color 250ms var(--timing);
+
+  .header-form:focus-within &,
+  .header-form:hover & {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+}
+
+.header-form__input::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--main-light-color);
+}
+
+.input-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: transparent;
+  border: none;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+
+  transition: scale 250ms var(--timing), background-color 250ms var(--timing);
+
+  &:focus,
+  &:hover {
+    scale: 1.2;
+    background-color: var(--accent-color);
+  }
+}
+.input-btn__icon {
+  width: 12px;
+  height: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+.filter_form {
+  text-align: center;
+}
+.filter_form__select {
+  border: 0px;
+  border-bottom: 1px solid var(--main-light-color);
+  color: var(--main-light-color);
+  border-radius: 0px;
+  outline: none;
+  background-color: inherit;
+  padding: 2px;
+}
+
+.filter_form__select > option {
+  background-color: #272e34;
+}
+
+.filter_form__select:not(:last-child) {
+  margin-right: 3px;
+  margin-bottom: 8px;
+}
+
+.btnResetFilter {
+  margin-top: 5px;
+  text-align: start;
+  width: 50px;
+  border: 0px;
+  color: var(--main-light-color);
+  border-radius: 0px;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               ЗМІНА ТЕМИ                                   */
+/* -------------------------------------------------------------------------- */
+
+.theme-switch {
+  display: flex;
+  margin-bottom: 5px;
+
+  @include tablet {
+    justify-content: center;
+  }
+}
+
+.them-btn-wraper {
+  width: 42px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 4px;
+  background-color: transparent;
+  border: 1px solid var(--current-link-color);
+  border-radius: 30px;
+}
+
+.them-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--current-link-color);
+  border: none;
+  outline: transparent;
+}
+
+.them-dark-btn {
+  opacity: 0;
+}
+
+.switch-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--current-link-color);
+}
+
+.icon-dark {
+  opacity: 0.4;
+}
